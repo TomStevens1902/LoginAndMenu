@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        //constants
+        // constants
         const string USERNAME = "admin";
         const string PASSWORD = "Password123";
 
@@ -22,27 +22,29 @@
             Console.Clear();
             // provide menu options within a loop
             valid = true;
-            while (true)
+            while (true) // allows user to try all options. x is used to escape.
             {
                 //if input was invalid provide a prompt
-                if (!HandleOption(valid))
+                if (!HandleOptionInput(valid))
                     valid = false;
                 else
                     valid = true;
 
+                // clear previous output
                 Console.Clear();
             }
         }
 
         static bool Login()
         {
-            //login
+            // asks for username and password
             Console.Write("Username: ");
             string? inputUsername = Console.ReadLine();
 
             Console.Write("Password: ");
             string? inputPassword = Console.ReadLine();
 
+            // validates input
             if ((inputUsername.ToLower() == USERNAME.ToLower()) && inputPassword == PASSWORD)
             {
                 return true;
@@ -63,47 +65,44 @@
                 """);
         }
 
-        static bool HandleOption(bool prevInputValid)
+        static bool HandleOptionInput(bool prevInputValid)
         {
-            //display menu
+            // display menu
             DisplayMenu();
 
-            //ask for input
-            if (prevInputValid) //provides a prompt if previous input was invalid
-            {
+            // ask for input
+            if (prevInputValid) // provides a prompt if previous input was invalid
                 Console.Write("Please enter an option: ");
-            } 
             else 
-            {
                 Console.Write("""
                     -- ! Invalid Input ! --
                     Please enter an option: 
                     """);
-            }
+
             string? input = Console.ReadLine();
 
 
             int option = 0;
-            //validate its a number
+            // validate its a number
             try
             {
                 option = int.Parse(input);
             } 
             catch (Exception ex)
             {
-                //check if its an x
+                // check if its an x
                 if (input == "x")
                 {
-                    //exit application
+                    // exit application
                     Environment.Exit(0);
                 } else
                 {
-                    //ask again
+                    // ask again
                     return false;
                 }
             }
 
-            Console.Clear(); //clear menu before displaying option
+            Console.Clear(); // clear menu before displaying option
             switch (option)
             {
                 case 1:
@@ -119,13 +118,13 @@
                     Console.WriteLine("Delete member");
                     break;
                 default:
-                    //ask again
+                    // ask again
                     return false;
                     //break;
             }
 
-            //correct output
-            Console.ReadLine(); //pause
+            // correct output
+            Console.ReadLine(); // provides a pause to read output
             return true;
         }
     }
