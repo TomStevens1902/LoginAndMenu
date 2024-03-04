@@ -14,7 +14,7 @@
             {
                 // ask for login information again
                 Console.Clear();
-                Console.WriteLine("-- ! Incorrecr Username or Password ! --");
+                Console.WriteLine("-- ! Incorrect Username or Password ! --");
                 valid = Login();
             }
 
@@ -24,11 +24,8 @@
             valid = true;
             while (true) // allows user to try all options. x is used to escape.
             {
-                //if input was invalid provide a prompt
-                if (!HandleOptionInput(valid))
-                    valid = false;
-                else
-                    valid = true;
+                // if input was invalid provide a prompt
+                valid = (!HandleOptionInput(valid)) ? false : true;
 
                 // clear previous output
                 Console.Clear();
@@ -88,7 +85,7 @@
             {
                 option = int.Parse(input);
             } 
-            catch (Exception ex)
+            catch 
             {
                 // check if its an x
                 if (input == "x")
