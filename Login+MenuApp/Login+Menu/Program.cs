@@ -1,57 +1,57 @@
-﻿namespace Login_Menu
+﻿namespace Arrays_Loops
 {
     internal class Program
     {
         // constants
         const string USERNAME = "admin";
         const string PASSWORD = "Password123";
-
         static void Main(string[] args)
         {
-            // validate user login
-            bool valid = Login();
-            while (!valid)
-            {
-                // ask for login information again
-                Console.Clear();
-                Console.WriteLine("-- ! Incorrect Username or Password ! --");
-                valid = Login();
-            }
-
-
-            Console.Clear();
-            // provide menu options within a loop
-            valid = true;
-            while (true) // allows user to try all options. x is used to escape.
-            {
-                // if input was invalid provide a prompt
-                valid = (!HandleOptionInput(valid)) ? false : true;
-
-                // clear previous output
-                Console.Clear();
-            }
+            Login();
+            Menu();
         }
 
-        static bool Login()
+        static void Login()
         {
-            // asks for username and password
-            Console.Write("Username: ");
-            string? inputUsername = Console.ReadLine();
-
-            Console.Write("Password: ");
-            string? inputPassword = Console.ReadLine();
-
-            // validates input
-            if ((inputUsername.ToLower() == USERNAME.ToLower()) && inputPassword == PASSWORD)
+            bool validLogin = false;
+            do
             {
-                return true;
-            }
-            return false;
+                // asks for username and password
+                Console.Write("Username: ");
+                string? inputUsername = Console.ReadLine();
+
+                Console.Write("Password: ");
+                string? inputPassword = Console.ReadLine();
+
+                // validates input
+                if ((inputUsername.ToLower() == USERNAME.ToLower()) && inputPassword == PASSWORD)
+                {
+                    validLogin = true;
+                } else
+                {
+                    // adds an error message if input was invalid
+                    Console.Clear();
+                    Console.WriteLine("-- ! Incorrect Username or Password ! --");
+                }
+
+            } while (!validLogin);
+            /* 
+            - Used as the loop will always need to loop once
+            - previously i had a call to a login method before and inside the loop and
+              so i have improved readability
+             */
         }
 
-        static void DisplayMenu()
+        static void Menu()
         {
-            Console.WriteLine(""" 
+            bool prevInputValid = true;
+            bool exitMenu = false;
+
+            do
+            {
+                // displays the menu
+                Console.Clear();
+                Console.WriteLine(""" 
                 -- Main Menu --
                 1. Create new member
                 2. Edit member
@@ -60,69 +60,54 @@
                 x. Exit
 
                 """);
-        }
 
-        static bool HandleOptionInput(bool prevInputValid)
-        {
-            // display menu
-            DisplayMenu();
+                // asks the user to provide an option.
+                // provides a prompt if previous input was invalid
+                Console.Write(prevInputValid ? "Please enter an option: " : "--!Invalid Input!--\nPlease enter an option: ");
 
-            // ask for input
-            if (prevInputValid) // provides a prompt if previous input was invalid
-                Console.Write("Please enter an option: ");
-            else 
-                Console.Write("""
-                    -- ! Invalid Input ! --
-                    Please enter an option: 
-                    """);
+                string? input = Console.ReadLine();
+                int option = 0;
 
-            string? input = Console.ReadLine();
-
-
-            int option = 0;
-            // validate its a number
-            try
-            {
-                option = int.Parse(input);
-            } 
-            catch 
-            {
-                // check if its an x
-                if (input == "x")
+                // tries to determine if the input is an interger
+                if (int.TryParse(input, out option))
                 {
-                    // exit application
-                    Environment.Exit(0);
-                } else
+                    Console.Clear(); // clear menu before displaying option
+                    // if option is an interger try and display a menu option
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("Create new member");
+                            break;
+                        case 2:
+                            Console.WriteLine("Edit member");
+                            break;
+                        case 3:
+                            Console.WriteLine("View member");
+                            break;
+                        case 4:
+                            Console.WriteLine("Delete member");
+                            break;
+                        default:
+                            // if interger was not a valid option then provide invalid prompt
+                            prevInputValid = false;
+                            continue; // used to jump back to the start of the loop
+                    }
+                    prevInputValid = true;
+                    Console.ReadLine();
+                } else if (input == "x") // exit condition
                 {
-                    // ask again
-                    return false;
+                    exitMenu = true;
+                } else // user provided a non int and so should be handled as invalid
+                {
+                    prevInputValid = false;
                 }
-            }
 
-            Console.Clear(); // clear menu before displaying option
-            switch (option)
-            {
-                case 1:
-                    Console.WriteLine("Create new member");
-                    break;
-                case 2:
-                    Console.WriteLine("Edit member");
-                    break;
-                case 3:
-                    Console.WriteLine("View member");
-                    break;
-                case 4:
-                    Console.WriteLine("Delete member");
-                    break;
-                default:
-                    // ask again
-                    return false;
-                    //break;
-            }
-
-            // correct output
-            Console.ReadLine(); // provides a pause to read output
-            return true;
+            } while (!exitMenu);
+            /* 
+            - Used as the loop will always need to loop once
+            - previously i had this loop as a infinite while(true) relying on Environment.Exit(0); to
+              exit the program. Now it relies on a condition and exits the program normally 
+             */
         }
     }
 }

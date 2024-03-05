@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Tom\\Documents\\GithubRepos\\LoginAndMenu\\Login\u002BMenuApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB9A6CD9-E349-4D0B-8F99-98C5CF10B0C9}|Login\u002BMenu\\Login\u002BMenu.csproj|C:\\Users\\Tom\\Documents\\GithubRepos\\LoginAndMenu\\Login\u002BMenuApp\\login\u002Bmenu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BB9A6CD9-E349-4D0B-8F99-98C5CF10B0C9}|Login\u002BMenu\\Login\u002BMenu.csproj|c:\\users\\tom\\documents\\githubrepos\\loginandmenu\\login\u002Bmenuapp\\login\u002Bmenu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB9A6CD9-E349-4D0B-8F99-98C5CF10B0C9}|Login\u002BMenu\\Login\u002BMenu.csproj|solutionrelative:login\u002Bmenu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Login\u002BMenu\\Program.cs",
               "ToolTip": "C:\\Users\\Tom\\Documents\\GithubRepos\\LoginAndMenu\\Login\u002BMenuApp\\Login\u002BMenu\\Program.cs",
               "RelativeToolTip": "Login\u002BMenu\\Program.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBwAAAAAAAAA",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAgwG4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-29T12:26:03.065Z",
               "EditorCaption": ""
