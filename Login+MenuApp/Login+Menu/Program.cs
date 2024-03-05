@@ -1,4 +1,4 @@
-﻿namespace Arrays_Loops
+﻿namespace Login_Menu
 {
     internal class Program
     {
@@ -63,7 +63,7 @@
 
                 // asks the user to provide an option.
                 // provides a prompt if previous input was invalid
-                Console.Write(prevInputValid ? "Please enter an option: " : "--!Invalid Input!--\nPlease enter an option: ");
+                Console.Write(prevInputValid ? "Please enter an option: " : "--! Invalid Input !--\nPlease enter an option: ");
 
                 string? input = Console.ReadLine();
                 int option = 0;
